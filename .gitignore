@@ -1,0 +1,17 @@
+# Python - Archivos temporales de ejecución
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Entornos virtuales 
+venv/
+env/
+ENV/
+
+# VS Code - 
+.vscode/
+
+# Archivos de sistema (AtlasOS/Windows)
+Thumbs.db
+desktop.ini

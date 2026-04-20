@@ -1,8 +1,5 @@
 from pathlib import Path
 
-
-from pathlib import Path
-
 def select_path() -> Path:
     while True:
         try:

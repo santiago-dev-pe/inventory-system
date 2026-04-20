@@ -1,25 +1,25 @@
 from pathlib import Path
 
-def select_path() -> Path:
+def get_validated_path() -> Path:
     while True:
         try:
-            user_inp = input("Write a direction to continue or press Enter to continue in the current path:\n").strip()
+            entry = input("Enter a directory path or press Enter for current directory:\n").strip()
             
-            if user_inp == "":
-                base_path = Path.cwd()
-                print(f"The folder that will be used to create subfolders is {base_path}.")
-                return base_path
+            if not entry:
+                current_path = Path.cwd().resolve()
+                print(f"Using current directory: {current_path}")
+                return current_path
             
-            selected_path = Path(user_inp)
+            target_path = Path(entry).resolve()
 
-            if selected_path.exists() and selected_path.is_dir():
-                print("The folder specified by the user will be used.")
-                return selected_path
-            else:
-                print("The path does not exist or is not a directory.")
+            if target_path.exists() and target_path.is_dir():
+                print(f"Directory confirmed: {target_path}")
+                return target_path
+            
+            print("Error: The path does not exist or is not a directory.")
                 
         except OSError as e:
-            print(f"Error: Invalid system operation or illegal characters. Details: {e}")
+            print(f"System Error: Illegal characters or restricted access. {e}")
         
 def create_dir() -> Path:
     pass
